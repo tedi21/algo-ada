@@ -5,8 +5,8 @@ package body Solver.Comparators is
         (Comparator_Type'(Function_Ptr => Function_Ptr));
 
     function Compare(   Comparator: in Comparator_Type;
-                        Var1: in Variable_Type;
-                        Var2: in Variable_Type)
+                        Var1: aliased in Variable_Type;
+                        Var2: aliased in Variable_Type)
         return Boolean is
     begin
         return Comparator.Function_Ptr.all(Var1, Var2);

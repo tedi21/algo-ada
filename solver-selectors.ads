@@ -4,7 +4,7 @@ generic
 package Solver.Selectors is
 
     type Function_Type is access function(
-                Var: in Variable_Type)
+                Var: aliased in Variable_Type)
             return Value_Type;
 
     type Selector_Type is tagged private;
@@ -15,7 +15,7 @@ package Solver.Selectors is
         return Selector_Type;
    
     function Select_Value(  Selector: in Selector_Type;
-                            Var: in Variable_Type)
+                            Var: aliased in Variable_Type)
         return Value_Type;
 
     function Is_Null(Selector: in Selector_Type)

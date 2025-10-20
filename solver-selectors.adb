@@ -5,7 +5,7 @@ package body Solver.Selectors is
         (Selector_Type'(Function_Ptr => Function_Ptr));
 
     function Select_Value(  Selector: in Selector_Type;
-                            Var: in Variable_Type)
+                            Var: aliased in Variable_Type)
         return Value_Type is
     begin
         return Selector.Function_Ptr.all(Var);

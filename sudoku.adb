@@ -137,17 +137,17 @@ package body Sudoku is
         return Sastified;
     end Test_Square;
 
-    function Compare_Variable(  Var1: in Variable_Type;
-                                Var2: in Variable_Type)
+    function Compare_Variable(  Var1: aliased in Variable_Type;
+                                Var2: aliased in Variable_Type)
             return Boolean is
     begin
-        return var1.Get_Domain_Size < Var2.Get_Domain_Size;
+        return Var1.Get_Domain_Size < Var2.Get_Domain_Size;
     end Compare_Variable;
 
-    function Select_Value(Var: in Variable_Type)
+    function Select_Value(Var: aliased in Variable_Type)
             return Positive is
     begin
-        return var.Get_Domain.First_Value;
+        return Var.Get_Domain.First_Value;
     end Select_Value;
 
     procedure Initialize is

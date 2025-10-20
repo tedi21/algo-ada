@@ -3,8 +3,8 @@ generic
 package Solver.Comparators is
 
     type Function_Type is access function(
-                Var1: in Variable_Type;
-                Var2: in Variable_Type)
+                Var1: aliased in Variable_Type;
+                Var2: aliased in Variable_Type)
             return Boolean;
 
     type Comparator_Type is tagged private;
@@ -15,8 +15,8 @@ package Solver.Comparators is
         return Comparator_Type;
    
     function Compare(   Comparator: in Comparator_Type;
-                        Var1: in Variable_Type;
-                        Var2: in Variable_Type)
+                        Var1: aliased in Variable_Type;
+                        Var2: aliased in Variable_Type)
         return Boolean;
 
     function Is_Null(Comparator: in Comparator_Type)
